@@ -1,77 +1,141 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Javed Fun Site</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javed Fun Site 😈</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #111827, #4c1d95);
-      color: white;
-      text-align: center;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .box {
-      max-width: 500px;
-      margin: 60px auto;
-      padding: 30px 20px;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #050505;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
+.container {
+  text-align: center;
+  padding: 25px;
+}
 
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
+h1 {
+  font-size: 42px;
+}
 
-    .card {
-      background: rgba(255,255,255,0.12);
-      border-radius: 20px;
-      padding: 25px;
-      margin-top: 25px;
-    }
+button {
+  padding: 15px 28px;
+  border: none;
+  border-radius: 12px;
+  background: red;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    button {
-      background: white;
-      color: #4c1d95;
-      border: none;
-      padding: 14px 25px;
-      border-radius: 30px;
-      font-size: 17px;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-  </style>
+#warning {
+  display: none;
+}
+
+.danger {
+  color: red;
+  font-size: 38px;
+  font-weight: bold;
+  animation: blink .4s infinite;
+}
+
+#count {
+  font-size: 90px;
+  color: red;
+  margin: 20px;
+}
+
+#reveal {
+  display: none;
+  color: #00ff88;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.shake {
+  animation: shake .08s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.2; }
+}
+
+@keyframes shake {
+  0% { transform: translate(4px, 2px); }
+  25% { transform: translate(-4px, -2px); }
+  50% { transform: translate(3px, -3px); }
+  75% { transform: translate(-3px, 3px); }
+  100% { transform: translate(0); }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="box">
-    <h1>🎉 Javed Fun Site</h1>
+<div class="container">
 
-    <p>
-      Welcome to my website!
-    </p>
-
-    <div class="card">
-      <h2>✨ Welcome ✨</h2>
-      <p>
-        Ye meri personal fun website hai.
-        Yahan aapko photos, fun content aur aur bhi cheezein milengi.
-      </p>
-
-      <button onclick="alert('Welcome! 😄')">
-        Click Me
-      </button>
-    </div>
+  <div id="home">
+    <h1>🎉 Javed Fun Site 😈</h1>
+    <p>Ready for something dangerous? 👀</p>
+    <button onclick="startPrank()">CLICK ME 😈</button>
   </div>
+
+  <div id="warning">
+    <div class="danger">⚠️ DANGER ⚠️</div>
+    <p>Something is happening...</p>
+    <div id="count">5</div>
+    <p>DO NOT PANIC 😈</p>
+  </div>
+
+  <div id="reveal">
+    😂 GOT YOU! 😂
+    <p>It's just a prank! 😎🔥</p>
+  </div>
+
+</div>
+
+<script>
+function startPrank() {
+
+  document.getElementById("home").style.display = "none";
+  document.getElementById("warning").style.display = "block";
+
+  document.body.classList.add("shake");
+
+  let number = 5;
+  const count = document.getElementById("count");
+
+  const timer = setInterval(() => {
+
+    number--;
+    count.textContent = number;
+
+    if (number <= 0) {
+
+      clearInterval(timer);
+
+      document.body.classList.remove("shake");
+      document.getElementById("warning").style.display = "none";
+      document.getElementById("reveal").style.display = "block";
+    }
+
+  }, 1000);
+}
+</script>
 
 </body>
 </html>
-``
