@@ -1,4 +1,4 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -13,72 +13,98 @@
   font-family:Arial,Helvetica,sans-serif;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:#020204;
-  color:white;
+  color:#fff;
   min-height:100vh;
   overflow-x:hidden;
 }
 
-/* LOADING */
+/* ===== LOADER ===== */
 #loader{
   position:fixed;
   inset:0;
   background:#000;
-  z-index:9999;
+  z-index:99999;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
-  flex-direction:column;
-  transition:1s;
+  transition:1s ease;
 }
 
-.loaderText{
+.loader-title{
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:6px;
   color:#ff1744;
-  font-size:24px;
-  letter-spacing:4px;
-  text-shadow:0 0 20px #ff1744;
+  text-shadow:
+    0 0 10px #ff1744,
+    0 0 30px #ff1744;
+  animation:pulse 1s infinite alternate;
 }
 
-.bar{
-  width:220px;
+.loader-sub{
+  margin-top:12px;
+  color:#777;
+  font-size:11px;
+  letter-spacing:3px;
+}
+
+.loader-bar{
+  width:230px;
   height:4px;
-  background:#111;
-  margin-top:20px;
+  margin-top:25px;
+  background:#151515;
   overflow:hidden;
+  border-radius:10px;
 }
 
-.bar span{
+.loader-bar span{
   display:block;
-  height:100%;
   width:0;
+  height:100%;
   background:#ff1744;
-  box-shadow:0 0 15px #ff1744;
-  animation:load 2.5s forwards;
+  box-shadow:0 0 20px #ff1744;
+  animation:loading 2.5s forwards;
 }
 
-@keyframes load{
-  to{width:100%}
+@keyframes loading{
+  to{width:100%;}
 }
 
-/* BACKGROUND */
+@keyframes pulse{
+  from{transform:scale(1);}
+  to{transform:scale(1.05);}
+}
+
+/* ===== BACKGROUND ===== */
 canvas{
   position:fixed;
   inset:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+}
+
+.bg-glow{
+  position:fixed;
+  width:450px;
+  height:450px;
+  background:#ff1744;
+  opacity:.07;
+  filter:blur(120px);
+  border-radius:50%;
+  top:20%;
+  left:50%;
+  transform:translateX(-50%);
   z-index:-1;
 }
 
-/* MAIN */
+/* ===== MAIN ===== */
 main{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:30px 15px;
-}
-
-.card{
-  width:min(700px,94%);
-  padding:45px 25px;
-  border:1px solid rgba(255,23,68,.
+ 
